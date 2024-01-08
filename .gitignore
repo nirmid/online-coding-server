@@ -1,0 +1,13 @@
+# Node.js
+node_modules/
+
+# Logs
+logs
+*.log
+
+# Dependency directories
+vendor/
+.idea/
+
+# Optional: environment variables file (if you use dotenv)
+.env
