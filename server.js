@@ -44,7 +44,7 @@ io.on('connection', (socket) => {
       ]);
 
       // Emit  update to all clients of the same title
-      socket.to(title).emit('codeUpdated', { title, updatedCode });
+      socket.to(title).except(socket.id).emit('codeUpdated', { title, updatedCode });
     } catch (error) {
       console.error('Error updating code:', error);
     }
