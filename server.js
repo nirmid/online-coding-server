@@ -21,7 +21,6 @@ const clientsByTitle = {};
 
 // WebSocket connection handling
 io.on('connection', (socket) => {
-  console.log('Client connected');
   // Creating groups of sockets according to the code being edited
   const groupTitle = socket.handshake.query.title;
   socket.join(groupTitle);
@@ -52,14 +51,12 @@ io.on('connection', (socket) => {
 
   // Handle disconnection
   socket.on('disconnect', () => {
-    console.log('Client disconnected');
     clientsByTitle[groupTitle] = clientsByTitle[groupTitle].filter(client => client !== socket);
   });
 });
 
 // Endpoint for fetching a specific record by title
 app.get('/record/:title', async (req, res) => {
-  console.log("Got GET request for specific title");
   const { title } = req.params;
 
   try {
@@ -81,7 +78,6 @@ app.get('/record/:title', async (req, res) => {
 // Existing endpoint for fetching all records
 app.get('/records', async (req, res) => {
   try {
-    console.log("Got request for all titles from table!");
     const result = await pool.query('SELECT * FROM code');
     res.json(result.rows);
   } catch (error) {
