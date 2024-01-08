@@ -30,6 +30,7 @@ io.on('connection', (socket) => {
   clientsByTitle[groupTitle] = clientsByTitle[groupTitle] || [];
   const isFirstClient = clientsByTitle[groupTitle].length === 0;
   clientsByTitle[groupTitle].push(socket);
+  console.log(`${groupTitle} length is: ${clientsByTitle[groupTitle].length}`);
   if (!isFirstClient) {
     socket.emit('readOnlyStatus', { readOnly: false });
   }
