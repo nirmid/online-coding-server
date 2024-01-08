@@ -9,7 +9,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: '*',
+    origin: 'https://online-coding-client-production.up.railway.app',
     methods: ['GET', 'POST'],
   },
 });
@@ -91,4 +91,4 @@ app.get('/records', async (req, res) => {
 });
 
 const port  = process.env.PORT || 4000;
-server.listen(port , () => console.log('Server is running on localhost:4000'));
+server.listen(port , () => console.log(`Server is running on ${port}`));
