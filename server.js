@@ -3,6 +3,7 @@ const cors = require('cors');
 const http = require('http');
 const socketIo = require('socket.io');
 const pool = require('./database');
+require('dotenv').config()
 
 const app = express();
 const server = http.createServer(app);
@@ -88,4 +89,5 @@ app.get('/records', async (req, res) => {
   }
 });
 
-server.listen(4000, () => console.log('Server is running on localhost:4000'));
+const port  = process.env.PORT || 4000;
+server.listen(port , () => console.log('Server is running on localhost:4000'));
